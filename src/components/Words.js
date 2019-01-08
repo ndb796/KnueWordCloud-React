@@ -76,7 +76,7 @@ class Words extends React.Component {
             weight: this.weightText.getValue()
         }
         this.handleDialogToggle();
-        if (!word.word && !word.weight) {
+        if (!word.word || !word.weight) {
             return;
         }
         this._post(word);
