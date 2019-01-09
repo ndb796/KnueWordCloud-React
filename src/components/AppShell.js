@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MuiThemeProvider } from 'material-ui/styles';
 import { AppBar, Drawer, MenuItem } from 'material-ui';
+import '../index.css';
 
 class AppShell extends React.Component {
     constructor(props) {

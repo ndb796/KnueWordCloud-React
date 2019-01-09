@@ -4,6 +4,7 @@ import { FloatingActionButton, Dialog, FlatButton, TextField } from 'material-ui
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
+import '../index.css';
 
 const fabStyle = {
     position: 'fixed',

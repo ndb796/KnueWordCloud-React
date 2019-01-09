@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
+import '../index.css';
 
 class Home extends React.Component {
     render() {

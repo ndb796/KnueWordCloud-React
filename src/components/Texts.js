@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
 import TextTruncate from 'react-text-truncate';
 import { Link } from 'react-router-dom';
+import '../index.css';
 
 const styles = theme => ({
     hidden: {
