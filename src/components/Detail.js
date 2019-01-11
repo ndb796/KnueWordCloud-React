@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardText } from 'material-ui/Card';
 import '../index.css';
 import ActionUpdateIcon from 'material-ui/svg-icons/action/update';
-import { FloatingActionButton, Dialog, FlatButton } from 'material-ui';
+import { FloatingActionButton, Dialog, FlatButton, TextField } from 'material-ui';
 
 const databaseURL = "https://wordcloud-e11f9.firebaseio.com";
 const apiURL = "http://localhost:5000";
@@ -19,7 +19,9 @@ class Detail extends React.Component {
         this.state = {
             textContent: '',
             words: {},
-            imageUrl: null
+            imageUrl: null,
+            maxCount: 30,
+            minLength: 1
         }
     }
     componentDidMount() {
@@ -65,8 +67,8 @@ class Detail extends React.Component {
         const wordCloud = {
             textID: this.props.match.params.textID,
             text: this.state.textContent,
-            maxCount: 30,
-            minLength: 1,
+            maxCount: this.state.maxCount,
+            minLength: this.state.minLength,
             words: this.state.words
         }
         this.handleDialogToggle();
@@ -95,6 +97,17 @@ class Detail extends React.Component {
             this.setState({imageUrl: apiURL + "/outputs?textID=" + this.props.match.params.textID})
         });
     }
+    handleValueChange = (e) => {
+        let nextState = {};
+        if(e.target.value % 1 === 0) {
+            if(e.target.value < 1) {
+                nextState[e.target.name] = 1;
+            } else {
+                nextState[e.target.name] = e.target.value;
+            }
+        }
+        this.setState(nextState);
+    }
     render() {
         return (
             <Card>
@@ -118,6 +131,12 @@ class Detail extends React.Component {
                     modal={false}
                     open={this.state.dialog}
                     onRequestClose={this.handleDialogToggle}>
+                    <div>최대 단어 개수</div>
+                    <TextField type="number" name="maxCount"
+                     onChange={this.handleValueChange} value={this.state.maxCount}/>
+                    <div>단어의 최소 길이</div>
+                    <TextField type="number" name="minLength"
+                     onChange={this.handleValueChange} value={this.state.minLength}/>
                 </Dialog>
             </Card>
         );

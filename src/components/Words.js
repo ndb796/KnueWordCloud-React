@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import { FloatingActionButton, Dialog, FlatButton, TextField } from 'material-ui';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -19,7 +19,8 @@ class Words extends React.Component {
         super();
         this.state = {
             words: {},
-            dialog: false
+            dialog: false,
+            weight: 1
         };
     }
 
@@ -74,7 +75,7 @@ class Words extends React.Component {
     handleSubmit = () => {
         const word = {
             word: this.wordText.getValue(),
-            weight: this.weightText.getValue()
+            weight: this.state.weight
         }
         this.handleDialogToggle();
         if (!word.word || !word.weight) {
@@ -85,6 +86,18 @@ class Words extends React.Component {
 
     handleDelete = (id) => {
         this._delete(id);
+    }
+
+    handleValueChange = (e) => {
+        let nextState = {};
+        nextState[e.target.name] = e.target.value;
+        this.setState(nextState);
+        if(e.target.value < 1) {
+            this.setState({weight: 1});
+        }
+        else if(e.target.value > 9) {
+            this.setState({weight: 9});
+        }
     }
 
     render() {
@@ -113,8 +126,9 @@ class Words extends React.Component {
                     onRequestClose={this.handleDialogToggle}>
                     <div>단어를 입력하세요.</div>
                     <TextField hintText="단어" name="word" ref={ref => this.wordText=ref}/>
-                    <div>가중치를 입력하세요.</div>
-                    <TextField hintText="가중치(숫자만)" name="weight" ref={ref => this.weightText=ref}/>
+                    <div>가중치를 입력하세요. (1부터 9까지)</div>
+                    <TextField type="number" name="weight"
+                     onChange={this.handleValueChange} value={this.state.weight}/>
                 </Dialog>
             </div>
         );
