@@ -5,7 +5,7 @@ import ActionUpdateIcon from 'material-ui/svg-icons/action/update';
 import { FloatingActionButton, Dialog, FlatButton, TextField } from 'material-ui';
 
 const databaseURL = "https://wordcloud-e11f9.firebaseio.com";
-const apiURL = "http://localhost:5000";
+const apiURL = "https://wordcloudpython.tk";
 
 const fabStyle = {
     position: 'fixed',
