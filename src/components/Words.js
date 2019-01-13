@@ -92,12 +92,6 @@ class Words extends React.Component {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
-        if(e.target.value < 1) {
-            this.setState({weight: 1});
-        }
-        else if(e.target.value > 9) {
-            this.setState({weight: 9});
-        }
     }
 
     render() {

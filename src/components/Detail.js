@@ -99,13 +99,7 @@ class Detail extends React.Component {
     }
     handleValueChange = (e) => {
         let nextState = {};
-        if(e.target.value % 1 === 0) {
-            if(e.target.value < 1) {
-                nextState[e.target.name] = 1;
-            } else {
-                nextState[e.target.name] = e.target.value;
-            }
-        }
+        nextState[e.target.name] = e.target.value;
         this.setState(nextState);
     }
     render() {
