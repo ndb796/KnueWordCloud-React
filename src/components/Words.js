@@ -12,7 +12,7 @@ const fabStyle = {
     right: '20px'
 };
 
-const databaseURL = "https://wordcloud-e11f9.firebaseio.com";
+const databaseURL = "https://knue-word-cloud.firebaseio.com";
 
 class Words extends React.Component {
     constructor() {
@@ -102,7 +102,7 @@ class Words extends React.Component {
                     return (
                         <Card key={id} style={{marginTop: '5px', paddingTop: '10px', paddingBottom: '10px'}}>
                             <Grid container>
-                                <Grid style={{marginTop: '7px', display: 'flex', justifyContent: 'center'}} item xs={4}>단어: {word.word}</Grid>
+                                <Grid style={{marginTop: '7px', display: 'flex', justifyContent: 'center'}} item xs={4}>감성 단어: {word.word}</Grid>
                                 <Grid style={{marginTop: '7px', display: 'flex', justifyContent: 'center'}} item xs={4}>가중치: {word.weight}</Grid>
                                 <Grid style={{display: 'flex', justifyContent: 'center'}} item xs={4}><Button variant="contained" color="primary" onClick={() => this.handleDelete(id)}>삭제</Button></Grid>
                             </Grid>
@@ -113,7 +113,7 @@ class Words extends React.Component {
                     <ContentAddIcon/>
                 </FloatingActionButton>
                 <Dialog
-                    title="단어 추가"
+                    title="감성 단어 추가"
                     actions={<FlatButton label="추가" primary={true} onClick={this.handleSubmit}/>}
                     modal={false}
                     open={this.state.dialog}

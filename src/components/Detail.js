@@ -4,8 +4,8 @@ import '../index.css';
 import ActionUpdateIcon from 'material-ui/svg-icons/action/update';
 import { FloatingActionButton, Dialog, FlatButton, TextField } from 'material-ui';
 
-const databaseURL = "https://wordcloud-e11f9.firebaseio.com";
-const apiURL = "https://wordcloudpython.tk";
+const databaseURL = "https://knue-word-cloud.firebaseio.com";
+const apiURL = "https://knuewordcloud.tk";
 
 const fabStyle = {
     position: 'fixed',
@@ -111,7 +111,7 @@ class Detail extends React.Component {
                             ((this.state.imageUrl == 'READY')?
                                 '워드 클라우드 이미지를 불러오고 있습니다.':
                                 ((this.state.imageUrl == 'NONE')?
-                                    '해당 텍스트에 대한 워드 클라우드를 만들어 주세요.':
+                                    '해당 축어록 대한 워드 클라우드를 만들어 주세요.':
                                     <img key={Math.random()} src={this.state.imageUrl + '&random=' + Math.random()} style={{width: '100%'}}/>)):
                         ''
                     }

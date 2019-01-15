@@ -23,17 +23,17 @@ class AppShell extends React.Component {
                         open={this.state.toggle} docked={false}
                         onRequestChange={this.handleRequestChange}>
                         <MenuItem
-                            primaryText={'홈 화면'}
+                            primaryText={'메인 화면'}
                             containerElement={<Link to={'/'}/>}
                             onClick={this.handleLinkClick}
                         />
                         <MenuItem
-                            primaryText={'텍스트 관리'}
+                            primaryText={'축어록 관리'}
                             containerElement={<Link to={'/texts'}/>}
                             onClick={this.handleLinkClick}
                         />
                         <MenuItem
-                            primaryText={'단어 관리'}
+                            primaryText={'감성 단어 관리'}
                             containerElement={<Link to={'/words'}/>}
                             onClick={this.handleLinkClick}
                         />

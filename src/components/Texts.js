@@ -21,7 +21,7 @@ const fabStyle = {
     right: '20px'
 };
 
-const databaseURL = "https://wordcloud-e11f9.firebaseio.com";
+const databaseURL = "https://knue-word-cloud.firebaseio.com";
   
 class Texts extends React.Component {
 
@@ -139,14 +139,14 @@ class Texts extends React.Component {
                     <ContentAddIcon/>
                 </FloatingActionButton>
                 <Dialog
-                    title="텍스트 추가"
+                    title="축어록 추가"
                     actions={<FlatButton label="추가" primary={true} onClick={this.handleSubmit}/>}
                     modal={false}
                     open={this.state.dialog}
                     onRequestClose={this.handleDialogToggle}>
-                    <div>텍스트 이름을 작성하세요.</div>
+                    <div>축어록 이름을 작성하세요.</div>
                     <TextField hintText="이름" name="textName" ref={ref => this.textName=ref}/>
-                    <div>텍스트 파일을 업로드하세요.</div>
+                    <div>축어록 파일을 업로드하세요.</div>
                     <input className={classes.hidden} accept="text/plain" id="raised-button-file" type="file" value={(this.state.fileName)? this.state.fileName : null} onChange={this.handleFileChange} />
                     <label htmlFor="raised-button-file"> 
                         <Button variant="contained" color="primary" component="span" name="file">
