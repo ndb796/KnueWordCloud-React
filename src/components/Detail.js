@@ -19,6 +19,7 @@ class Detail extends React.Component {
         this.state = {
             textContent: '',
             words: {},
+            stopwords: {},
             imageUrl: null,
             maxCount: 30,
             minLength: 1
@@ -28,6 +29,7 @@ class Detail extends React.Component {
         this._getImage();
         this._getText();
         this._getWords();
+        this._getStopwords();
     }
     _getText() {
         fetch(`${databaseURL}/texts/${this.props.match.params.textID}.json`).then(res => {
@@ -44,6 +46,14 @@ class Detail extends React.Component {
             }
             return res.json();
         }).then(words => this.setState({words: (words == null) ? {} : words}));
+    }
+    _getStopwords() {
+        fetch(`${databaseURL}/stopwords.json`).then(res => {
+            if(res.status != 200) {
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        }).then(stopwords => this.setState({stopwords: (stopwords == null) ? {} : stopwords}));
     }
     _getImage() {
         fetch(`${apiURL}/validate?textID=${this.props.match.params.textID}`).then(res => {
@@ -69,14 +79,16 @@ class Detail extends React.Component {
             text: this.state.textContent,
             maxCount: this.state.maxCount,
             minLength: this.state.minLength,
-            words: this.state.words
+            words: this.state.words,
+            stopwords: this.state.stopwords
         }
         this.handleDialogToggle();
         if (!wordCloud.textID ||
             !wordCloud.text ||
             !wordCloud.maxCount ||
             !wordCloud.minLength ||
-            !wordCloud.words) {
+            !wordCloud.words ||
+            !wordCloud.stopwords) {
             return;
         }
         this._post(wordCloud);
