@@ -37,6 +37,11 @@ class AppShell extends React.Component {
                             containerElement={<Link to={'/words'}/>}
                             onClick={this.handleLinkClick}
                         />
+                        <MenuItem
+                            primaryText={'제한 단어 관리'}
+                            containerElement={<Link to={'/stopwords'}/>}
+                            onClick={this.handleLinkClick}
+                        />
                     </Drawer>
                 </div>
                 <div id="content" style={{margin: 'auto', marginTop: '20px'}}>
