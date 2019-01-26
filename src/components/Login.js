@@ -49,6 +49,9 @@ class Login extends React.Component  {
         this.state = {
             password: ''
         };
+        const cookies = new Cookies();
+        cookies.set('password', '', { path: '*' });
+        this.handleValueChange = this.handleValueChange.bind(this);
     }
     login = () => {
         if (this.state.password == 'knue') {
@@ -56,6 +59,9 @@ class Login extends React.Component  {
         }
         const cookies = new Cookies();
         cookies.set('password', this.state.password, { path: '*' });
+        this.setState({
+            password: ''
+        });
     }
     handleValueChange = (e) => {
         let nextState = {};
@@ -76,7 +82,7 @@ class Login extends React.Component  {
                     </Typography>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">비밀번호</InputLabel>
-                        <Input onChange={this.handleValueChange} name="password" type="password" id="password" autoComplete="current-password" />
+                        <Input value={this.state.password} onChange={this.handleValueChange} name="password" type="password" id="password" autoComplete="current-password" />
                     </FormControl>
                     <Button onClick={this.login} fullWidth variant="contained" color="primary" className={classes.submit}>
                         로그인
