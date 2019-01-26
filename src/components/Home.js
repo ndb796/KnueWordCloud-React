@@ -1,8 +1,16 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import '../index.css';
+import Cookies from 'universal-cookie';
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        const cookies = new Cookies();
+        if (cookies.get('password') != 'knue') {
+            this.props.history.push("/");
+        }
+    }
     render() {
         return (
             <Card>

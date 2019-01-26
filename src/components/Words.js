@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
 import '../index.css';
+import Cookies from 'universal-cookie';
 
 const fabStyle = {
     position: 'fixed',
@@ -15,13 +16,17 @@ const fabStyle = {
 const databaseURL = "https://knue-word-cloud.firebaseio.com";
 
 class Words extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             words: {},
             dialog: false,
             weight: 1
         };
+        const cookies = new Cookies();
+        if (cookies.get('password') != 'knue') {
+            this.props.history.push("/");
+        }
     }
 
     _get() {
@@ -120,7 +125,7 @@ class Words extends React.Component {
                     onRequestClose={this.handleDialogToggle}>
                     <div>단어를 입력하세요.</div>
                     <TextField hintText="단어" name="word" ref={ref => this.wordText=ref}/>
-                    <div>가중치를 입력하세요. (1부터 9까지)</div>
+                    <div>가중치를 입력하세요.<br/>(1부터 50까지)</div>
                     <TextField type="number" name="weight"
                      onChange={this.handleValueChange} value={this.state.weight}/>
                 </Dialog>

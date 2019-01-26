@@ -8,6 +8,7 @@ import ContentAddIcon from 'material-ui/svg-icons/content/add';
 import TextTruncate from 'react-text-truncate';
 import { Link } from 'react-router-dom';
 import '../index.css';
+import Cookies from 'universal-cookie';
 
 const styles = theme => ({
     hidden: {
@@ -34,6 +35,10 @@ class Texts extends React.Component {
             dialog: false
         }
         this.handleFileChange = this.handleFileChange.bind(this);
+        const cookies = new Cookies();
+        if (cookies.get('password') != 'knue') {
+            this.props.history.push("/");
+        }
     }
 
     _get() {

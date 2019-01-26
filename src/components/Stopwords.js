@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
 import '../index.css';
+import Cookies from 'universal-cookie';
 
 const fabStyle = {
     position: 'fixed',
@@ -15,12 +16,16 @@ const fabStyle = {
 const databaseURL = "https://knue-word-cloud.firebaseio.com";
 
 class Stopwords extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             stopwords: {},
             dialog: false
         };
+        const cookies = new Cookies();
+        if (cookies.get('password') != 'knue') {
+            this.props.history.push("/");
+        }
     }
 
     _get() {

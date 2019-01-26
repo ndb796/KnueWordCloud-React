@@ -5,6 +5,7 @@ import ActionUpdateIcon from 'material-ui/svg-icons/action/update';
 import { FloatingActionButton, Dialog, FlatButton, TextField } from 'material-ui';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Cookies from 'universal-cookie';
 
 const databaseURL = "https://knue-word-cloud.firebaseio.com";
 const apiURL = "https://knuewordcloud.tk";
@@ -26,6 +27,10 @@ class Detail extends React.Component {
             maxCount: 30,
             minLength: 1,
             weights: {}
+        }
+        const cookies = new Cookies();
+        if (cookies.get('password') != 'knue') {
+            this.props.history.push("/");
         }
     }
     componentDidMount() {
@@ -83,7 +88,7 @@ class Detail extends React.Component {
             }
         });
     }
-    _getWeights() {
+    _getWeights(count) {
         const wordCloud = {
             textID: this.props.match.params.textID,
             text: this.state.textContent,
@@ -112,8 +117,8 @@ class Detail extends React.Component {
             items.sort(function(first, second) {
                 return second[1] - first[1];
             });
-            // 값이 큰 10개의 원소까지만 추출합니다.
-            items = items.slice(0, 10)
+            // 값이 큰 count개의 원소까지만 추출합니다.
+            items = items.slice(0, count)
             // 새로운 딕셔너리 객체를 생성합니다.
             let newDict = {};
             for(let i = 0; i < items.length; i++) {
@@ -121,7 +126,7 @@ class Detail extends React.Component {
                 let value = items[i][1];
                 newDict[key] = value;
             }
-            // 값이 큰 10개의 원소를 포함하는 새로운 배열로 weights을 설정합니다.
+            // 값이 큰 count개의 원소를 포함하는 새로운 배열로 weights을 설정합니다.
             this.setState({weights: newDict})
         });
     }
@@ -218,8 +223,12 @@ class Detail extends React.Component {
                 </Card>
                 {
                     (this.state.imageUrl && this.state.imageUrl != 'READY' && this.state.imageUrl != 'NONE')?
-                        <Button style={{marginTop: '12px', marginBottom: '8px'}}
-                         variant="contained" color="primary" onClick={() => this._getWeights()}>주요 단어 10개</Button>:
+                        <div>
+                            <Button style={{marginTop: '12px', marginBottom: '8px'}}
+                            variant="contained" color="primary" onClick={() => this._getWeights(10)}>주요 단어 10개</Button>
+                            &nbsp;<Button style={{marginTop: '12px', marginBottom: '8px'}}
+                            variant="contained" color="primary" onClick={() => this._getWeights(30)}>주요 단어 30개</Button>
+                        </div>:
                         ''
                 }
                 {Object.keys(this.state.weights).map(word => {

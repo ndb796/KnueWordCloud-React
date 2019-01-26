@@ -24,7 +24,7 @@ class AppShell extends React.Component {
                         onRequestChange={this.handleRequestChange}>
                         <MenuItem
                             primaryText={'메인 화면'}
-                            containerElement={<Link to={'/'}/>}
+                            containerElement={<Link to={'/home'}/>}
                             onClick={this.handleLinkClick}
                         />
                         <MenuItem
