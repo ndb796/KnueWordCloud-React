@@ -28,10 +28,12 @@ class Detail extends React.Component {
             minLength: 1,
             weights: {}
         }
+        /*
         const cookies = new Cookies();
         if (cookies.get('password') != 'knue') {
             this.props.history.push("/");
         }
+        */
     }
     componentDidMount() {
         this._getImage();

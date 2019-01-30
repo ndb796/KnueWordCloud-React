@@ -22,10 +22,12 @@ class Stopwords extends React.Component {
             stopwords: {},
             dialog: false
         };
+        /*
         const cookies = new Cookies();
         if (cookies.get('password') != 'knue') {
             this.props.history.push("/");
         }
+        */
     }
 
     _get() {

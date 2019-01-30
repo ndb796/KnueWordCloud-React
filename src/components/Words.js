@@ -23,10 +23,12 @@ class Words extends React.Component {
             dialog: false,
             weight: 1
         };
+        /*
         const cookies = new Cookies();
         if (cookies.get('password') != 'knue') {
             this.props.history.push("/");
         }
+        */
     }
 
     _get() {

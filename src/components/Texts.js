@@ -35,10 +35,12 @@ class Texts extends React.Component {
             dialog: false
         }
         this.handleFileChange = this.handleFileChange.bind(this);
+        /*
         const cookies = new Cookies();
         if (cookies.get('password') != 'knue') {
             this.props.history.push("/");
         }
+        */
     }
 
     _get() {
