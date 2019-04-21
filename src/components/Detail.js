@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Cookies from 'universal-cookie';
 
 const databaseURL = "https://knue-word-cloud.firebaseio.com";
-const apiURL = "https://knuewordcloud.tk";
+const apiURL = "https://knuewordcloud2.tk";
 
 const fabStyle = {
     position: 'fixed',
