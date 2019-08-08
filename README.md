@@ -1,7 +1,16 @@
+## Installation
+```
+npm install --global yarn
+npm install -g win-node-env
+npm install --save-dev webpack
+yarn add react react-dom
+npm install -g firebase-tools
+```
+
 ## Ready
 ```
 firebase login
-firebase init
+firebase init (build, No, No, No)
 ```
 
 ## Deployment
