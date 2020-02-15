@@ -13,7 +13,7 @@
     "react-text-truncate": "^0.13.1",
     "style-loader": "^0.23.1",
     "universal-cookie": "^3.0.7",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
